@@ -1,6 +1,6 @@
 @import url("https://font.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap")
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -85,4 +85,14 @@ p a {
 
 p a:hover{
   text-decoration: underline;
+}
+
+.error_message{
+  padding: 12px;
+  background: #f8d7da;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #a42834;
+  text-align: center;
+  margin-bottom: 20px;
 }
