@@ -1,10 +1,48 @@
-@import url("https://font.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap")
+@import url("https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Poppins, serif;
+  font-family: "Carlito", serif;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 70px;
+  background: rgba(0, 0, 0, 0.0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo-img {
+  display: inline-block; /* Allineamento orizzontale delle immagini */
+  width: 80px;
+  height: 80px;
+  margin-right: 10px; /* Distanza tra i loghi */
+  overflow: hidden;
+  border-radius: 50%; /* Rende l'immagine circolare */
+}
+
+.logo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Impedisce la distorsione dell'immagine e la adatta al cerchio */
+}
+
+.logo {
+  font-size: 45px;
+  color: white;
+  text-decoration: none;
+  font-family: "Carlito", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  margin-left: auto; /* Spinge il logo "Elite Eventi" a destra */
 }
 
 
@@ -13,12 +51,16 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background: linear-gradient(to right, #4508ec, #c9d6ff);
   color: #333;
 }
 
 .container{
   margin: 0 15px;
+}
+
+input, button, textarea {
+  font-family: inherit;
 }
 
 .form-box{

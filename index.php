@@ -24,8 +24,7 @@ function isActiveForm($formName, $activeForm) {
 
 <!DOCTYPE html>
 <html lang = "en">
-<html>
-  <head>
+<head>
     <meta charset = "UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELITE EVENTS MANAGER</title>
@@ -33,6 +32,13 @@ function isActiveForm($formName, $activeForm) {
   </head>
 
   <body>
+  
+    <header class="header">
+        <a href="#" class="logo-img"><img src="img/csen-logo.png" id=logo1 /> </a>
+        <a href="#" class="logo-img"><img src="img/elite-logo.png" id=logo2 /> </a>
+        <a href="#" class="logo">Elite Eventi</a>
+    </header>
+  
     <div class="container">
       <div class="form-box <?= isActiveForm('login', $activeForm); ?>" id="login-form">
         <form action="login_register.php" method="post">
@@ -49,9 +55,9 @@ function isActiveForm($formName, $activeForm) {
         <form action="login_register.php" method="post">
           <h2>Registrati</h2>
           <?= showError($errors['register']); ?>
-          <input type="text" name="nome_asd" placeholder="Nome ASD" required>
-          <input type="text" name="cf_asd" placeholder="Codice Fiscale ASD" required>
-          <input type="text" name="rappr_asd" placeholder="Legale Rappresentante ASD" required>
+          <input type="text" name="nome_asd" placeholder="Nome ASD" required oninput="this.value = this.value.toUpperCase()">
+          <input type="text" name="cf_asd" placeholder="Codice Fiscale ASD" required oninput="this.value = this.value.toUpperCase()">
+          <input type="text" name="rappr_asd" placeholder="Legale Rappresentante ASD" required oninput="this.value = this.value.toUpperCase()">
           <input type="email" name="email" placeholder="Email ASD" required>
           <input type="text" name="tel" placeholder="Telefono ASD" required>
           <input type="password" name="password" placeholder="Password" required>
@@ -66,3 +72,5 @@ function isActiveForm($formName, $activeForm) {
   
   </body>
 </html>
+
+
