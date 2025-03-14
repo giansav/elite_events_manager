@@ -1,15 +1,14 @@
 <?php
 
 $host = "localhost";
-$port = 3307;
 $user = "root";
-$password = "Giafrik_1";
+$password = "";
 $database = "users_db";
 
-$conn = new mysqli($host, $user, $password, $database, $port);
+$conn = new mysqli($host, $user, $password, $database);
 
 if($conn->connect_error) {
-  die("Connessione fallita: ". $conn->connect_error);
+  die("Coneessione fallita: ". $conn->connect_error);
 }
 
 ?>
