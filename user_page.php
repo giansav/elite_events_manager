@@ -24,12 +24,11 @@ $result = $conn->query($sql);
 <header class="header">
     <a href="#" class="logo-img"><img src="img/csen-logo.png" id="logo1" /></a>
     <a href="#" class="logo-img"><img src="img/elite-logo.png" id="logo2" /></a>
-    <a href="#" class="logo">Elite Eventi</a>
+    <a href="#" class="logo">Elite Events Manager</a>
 </header>
 
 <div class="page-wrapper">
-    <h1 class="welcome-title">Benvenuto su Elite Events Manager</h1>
-
+    
     <!-- CONTENITORE BOX (RIQUADRI AFFIANCATI) -->
     <div class="box-container">
         <div class="left-box">
