@@ -24,6 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `atleti`
+--
+
+CREATE TABLE `atleti` (
+  `id` int(11) NOT NULL,
+  `nome_atleta` varchar(255) NOT NULL,
+  `cognome_atleta` varchar(255) NOT NULL,
+  `sesso_atleta` enum('M','F') NOT NULL,
+  `peso_atleta` enum('44','48','52','57','63','69','75','81','91','100') NOT NULL,
+  `disciplina` enum('KL','FB','KJ','GR') NOT NULL,
+  `esperienza` enum('esordiente','intermedio','avanzato') NOT NULL,
+  `anno_atleta` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `atleti`
+--
+
+INSERT INTO `atleti` (`id`, `nome_atleta`, `cognome_atleta`, `sesso_atleta`, `peso_atleta`, `disciplina`, `esperienza`, `anno_atleta`, `user_id`) VALUES
+(2, 'VINCENZO', 'CAVEZZA', 'M', '57', 'GR', 'intermedio', 2009, 1),
+(3, 'ADEM', 'CERBAH', 'M', '63', 'KJ', 'intermedio', 2011, 1),
+(4, 'ALESSANDRO', 'SAVINO', 'M', '75', 'KL', 'esordiente', 2007, 1),
+(5, 'GIUSEPPE', 'MINICHINI', 'M', '91', 'FB', 'esordiente', 2008, 1),
+(7, 'ANTONIO', 'BIANCHINI', 'M', '75', 'KL', 'avanzato', 2009, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `users`
 --
 
@@ -50,6 +79,13 @@ INSERT INTO `users` (`id`, `nome_asd`, `cf_asd`, `rappr_asd`, `email`, `tel`, `p
 --
 
 --
+-- Indici per le tabelle `atleti`
+--
+ALTER TABLE `atleti`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indici per le tabelle `users`
 --
 ALTER TABLE `users`
@@ -62,10 +98,26 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT per la tabella `atleti`
+--
+ALTER TABLE `atleti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `atleti`
+--
+ALTER TABLE `atleti`
+  ADD CONSTRAINT `atleti_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

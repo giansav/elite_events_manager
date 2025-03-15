@@ -1,13 +1,42 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "users_db");
+
+session_start(); 
+
+
+$host = "localhost";
+$port = 3307;
+$user = "root";
+$password = "Giafrik_1";
+$database = "users_db";
+
+$conn = new mysqli($host, $user, $password, $database, $port);
+
+// dove la porta è quella standard usa: " $conn = new mysqli("localhost", "root", "", "users_db"); " 
+// al posto delle righe da 3 a 9
 
 if ($conn->connect_error) {
     die("Connessione al database fallita: " . $conn->connect_error);
 }
 
-// Recupera le iscrizioni dal database
-$sql = "SELECT nome_atleta, cognome_atleta, sesso_atleta, anno_atleta, peso_atleta, disciplina, esperienza FROM atleti ORDER BY id DESC";
-$result = $conn->query($sql);
+// Controlliamo se l'utente è loggato
+if (!isset($_SESSION['user_id'])) {
+    die("Errore: utente non autenticato.");
+}
+
+// Otteniamo l'user_id dell'utente loggato
+$user_id = $_SESSION['user_id'];
+
+// Recupera SOLO gli atleti iscritti dall'utente loggato
+$sql = "SELECT nome_atleta, cognome_atleta, sesso_atleta, anno_atleta, peso_atleta, disciplina, esperienza 
+        FROM atleti 
+        WHERE user_id = ? 
+        ORDER BY id DESC";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
 ?>
 
 <!DOCTYPE html>

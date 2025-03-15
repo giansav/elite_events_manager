@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Mar 14, 2025 alle 14:23
+-- Host: 127.0.0.1:3307
+-- Creato il: Mar 15, 2025 alle 11:09
 -- Versione del server: 10.4.32-MariaDB
 -- Versione PHP: 8.2.12
 
@@ -35,17 +35,20 @@ CREATE TABLE `atleti` (
   `peso_atleta` enum('44','48','52','57','63','69','75','81','91','100') NOT NULL,
   `disciplina` enum('KL','FB','KJ','GR') NOT NULL,
   `esperienza` enum('esordiente','intermedio','avanzato') NOT NULL,
-  `anno_atleta` int(11) NOT NULL
+  `anno_atleta` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `atleti`
 --
 
-INSERT INTO `atleti` (`id`, `nome_atleta`, `cognome_atleta`, `sesso_atleta`, `peso_atleta`, `disciplina`, `esperienza`, `anno_atleta`) VALUES
-(2, 'VINCENZO', 'CAVEZZA', 'M', '57', 'GR', 'intermedio', 2009),
-(3, 'ADEM', 'CERBAH', 'M', '63', 'KJ', 'intermedio', 2011),
-(4, 'ALESSANDRO', 'SAVINO', 'M', '75', 'KL', 'esordiente', 2007);
+INSERT INTO `atleti` (`id`, `nome_atleta`, `cognome_atleta`, `sesso_atleta`, `peso_atleta`, `disciplina`, `esperienza`, `anno_atleta`, `user_id`) VALUES
+(2, 'VINCENZO', 'CAVEZZA', 'M', '57', 'GR', 'intermedio', 2009, 1),
+(3, 'ADEM', 'CERBAH', 'M', '63', 'KJ', 'intermedio', 2011, 1),
+(4, 'ALESSANDRO', 'SAVINO', 'M', '75', 'KL', 'esordiente', 2007, 1),
+(5, 'GIUSEPPE', 'MINICHINI', 'M', '91', 'FB', 'esordiente', 2008, 1),
+(7, 'ANTONIO', 'BIANCHINI', 'M', '75', 'KL', 'avanzato', 2009, 2);
 
 --
 -- Indici per le tabelle scaricate
@@ -55,7 +58,8 @@ INSERT INTO `atleti` (`id`, `nome_atleta`, `cognome_atleta`, `sesso_atleta`, `pe
 -- Indici per le tabelle `atleti`
 --
 ALTER TABLE `atleti`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -65,7 +69,17 @@ ALTER TABLE `atleti`
 -- AUTO_INCREMENT per la tabella `atleti`
 --
 ALTER TABLE `atleti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Limiti per le tabelle scaricate
+--
+
+--
+-- Limiti per la tabella `atleti`
+--
+ALTER TABLE `atleti`
+  ADD CONSTRAINT `atleti_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -31,6 +31,8 @@ if(isset($_POST['login'])) {
   if($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     if(password_verify($password, $user['password'])) {
+      // Salviamo anche user_id nella sessione
+      $_SESSION['user_id'] = $user['id'];
       $_SESSION['nome_asd'] = $user['nome_asd'];
       $_SESSION['email'] = $user['email'];  
     }
